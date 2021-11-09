@@ -18,7 +18,7 @@ param adminPasswordOrKey string
 @description('virtualNetwork properties from VirtualNetworkCombo')
 param virtualNetwork object
 
-@description('defualt values for cclear VM')
+@description('default values for cclear VM')
 param VMSizeSettings object = {
   cclear: 'Standard_D4s_v3'
   cvu: 'Standard_D4s_v3'
@@ -198,9 +198,6 @@ resource cclearvm01 'Microsoft.Compute/virtualMachines@2021-03-01' = {
 resource cstorcapturenic 'Microsoft.Network/networkInterfaces@2020-11-01' = [for i in range(0, cstorCount): {
   name: '${cstorVmName}-${i}-capture-nic'
   location: location
-  dependsOn: [
-    cstorlb01
-  ]
   properties: {
     ipConfigurations: [
       {
@@ -306,9 +303,6 @@ resource cstorvm 'Microsoft.Compute/virtualMachines@2021-03-01' = [for i in rang
 resource cvucapturenic 'Microsoft.Network/networkInterfaces@2020-11-01' = [for i in range(0, cvuCount): {
   name: '${cvuVmName}-${i}-capture-nic'
   location: location
-  dependsOn: [
-    cvulb01
-  ]
   properties: {
     ipConfigurations: [
       {
