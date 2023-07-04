@@ -1,17 +1,14 @@
+.DEFAULT_GOAL := build
+
 .PHONY: build
 build: build-bicep
 
 .PHONY: build-bicep
 build-bicep:
-	# inject deployer.py into cclear userdata 
-	echo '#!/bin/bash' > userdata-cclear.bash
-	echo 'mkdir -p /opt/cloud/' >> userdata-cclear.bash
-	echo 'cat <<EOF_DEPLOYER >/opt/cloud/deployer.py' >> userdata-cclear.bash
-	cat deployer.py >> userdata-cclear.bash
-	echo '' >> userdata-cclear.bash
-	echo 'EOF_DEPLOYER' >> userdata-cclear.bash
-	echo 'chmod +x /opt/cloud/deployer.py' >> userdata-cclear.bash
+	./create-cclearv-cloud-init.sh
 	az bicep build --file main.bicep
+
+.PHONY: default
 
 .PHONY: tag-latest
 tag-latest:
