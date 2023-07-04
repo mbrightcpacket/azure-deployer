@@ -68,7 +68,7 @@
                             "subnets": ""
                         },
                         "defaultValue": {
-                            "name": "cpacketVnet",
+                            "name": "cpacket",
                             "addressPrefixSize": "/16"
                         },
                         "constraints": {
