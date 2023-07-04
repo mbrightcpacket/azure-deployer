@@ -85,7 +85,6 @@
                                     "addressPrefixSize": "/24"
                                 },
                                 "constraints": {
-                                    "required": true,
                                     "minAddressPrefixSize": "/28",
                                     "minAddressCount": 10,
                                     "requireContiguousAddresses": false
@@ -131,8 +130,7 @@
                                 "Standard_D32s_v3",
                                 "Standard_D48s_v3",
                                 "Standard_D64s_v3"
-                            ],
-                            "excludedSizes": []
+                            ]
                         },
                         "options": {
                             "hideDiskTypeFilter": false
@@ -225,8 +223,7 @@
                                 "Standard_D4s_v3",
                                 "Standard_D8s_v3",
                                 "Standard_D16s_v3"
-                            ],
-                            "excludedSizes": []
+                            ]
                         },
                         "options": {
                             "hideDiskTypeFilter": false
@@ -355,8 +352,7 @@
                                 "Standard_D32s_v3",
                                 "Standard_D48s_v3",
                                 "Standard_D64s_v3"
-                            ],
-                            "excludedSizes": []
+                            ]
                         },
                         "options": {
                             "hideDiskTypeFilter": false
