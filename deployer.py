@@ -11,6 +11,7 @@ from getpass import getpass
 
 try:
     from dotenv import load_dotenv
+
     load_dotenv()
 except ImportError:
     print(".env files will not be loaded. 'pip3 install python-dotenv' to install")
