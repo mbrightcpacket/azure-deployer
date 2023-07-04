@@ -98,7 +98,7 @@
             },
             {
                 "name": "cclear",
-                "label": "cClear Configuration",
+                "label": "cClear-V Configuration",
                 "elements": [
                     {
                         "name": "vmSizeSelector",
