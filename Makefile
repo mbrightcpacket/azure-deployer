@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := build
 
 .PHONY: build
-build: build-bicep
+build: format build-bicep
 
 .PHONY: build-bicep
 build-bicep:
@@ -18,3 +18,6 @@ tag-latest:
 	git tag latest
 	git push origin latest
 	git --no-pager log --pretty=oneline --max-count=3
+
+format:
+	az bicep format --file main.bicep
