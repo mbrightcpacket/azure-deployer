@@ -1,7 +1,7 @@
-.PHONY: build-bicep
-
+.PHONY: build
 build: build-bicep
 
+.PHONY: build-bicep
 build-bicep:
 	# inject deployer.py into cclear userdata 
 	echo '#!/bin/bash' > userdata-cclear.bash
@@ -13,6 +13,7 @@ build-bicep:
 	echo 'chmod +x /opt/cloud/deployer.py' >> userdata-cclear.bash
 	az bicep build --file main.bicep
 
+.PHONY: tag-latest
 tag-latest:
 	# create a git lightweight tag for lastest release
 	git tag --delete latest
