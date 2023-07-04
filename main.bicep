@@ -188,7 +188,7 @@ resource cclearvm 'Microsoft.Compute/virtualMachines@2021-03-01' = [for i in ran
       adminUsername: adminUsername
       adminPassword: adminPasswordOrKey
       linuxConfiguration: any(authenticationType == 'password' ? null : linuxConfiguration) // TODO: workaround for https://github.com/Azure/bicep/issues/449
-      customData: loadFileAsBase64('./userdata-cclear.bash')
+      customData: loadFileAsBase64('./cclearv-cloud-init.sh')
     }
   }
   tags: contains(tagsByResource, 'Microsoft.Compute/virtualMachines') ? tagsByResource['Microsoft.Compute/virtualMachines'] : null
@@ -269,7 +269,7 @@ resource cstorvm 'Microsoft.Compute/virtualMachines@2021-03-01' = [for i in rang
       adminUsername: adminUsername
       adminPassword: adminPasswordOrKey
       linuxConfiguration: any(authenticationType == 'password' ? null : linuxConfiguration) // TODO: workaround for https://github.com/Azure/bicep/issues/449
-      customData: loadFileAsBase64('./userdata-cstor.bash')
+      customData: loadFileAsBase64('./cstorv-cloud-init.sh')
     }
   }
   tags: contains(tagsByResource, 'Microsoft.Compute/virtualMachines') ? tagsByResource['Microsoft.Compute/virtualMachines'] : null
@@ -337,7 +337,7 @@ resource cvuvm 'Microsoft.Compute/virtualMachines@2021-03-01' = [for i in range(
       adminUsername: adminUsername
       adminPassword: adminPasswordOrKey
       linuxConfiguration: any(authenticationType == 'password' ? null : linuxConfiguration) // TODO: workaround for https://github.com/Azure/bicep/issues/449
-      customData: loadFileAsBase64('./userdata-cvu.bash')
+      customData: loadFileAsBase64('./cvuv-cloud-init.sh')
     }
   }
   tags: contains(tagsByResource, 'Microsoft.Compute/virtualMachines') ? tagsByResource['Microsoft.Compute/virtualMachines'] : null
