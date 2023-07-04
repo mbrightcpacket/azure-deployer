@@ -1,0 +1,124 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus2"
+        },
+        "adminUsername": {
+            "value": "ubuntu"
+        },
+        "authenticationType": {
+            "value": "sshPublicKey"
+        },
+        "adminPasswordOrKey": {
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtKVSsLL0ycuMzXg3TfPRUEgj1WGsGhDWfOCiIxoKAGSRhumKXwZRs0LAQaRB1hKkTmDd+8aiYWex499N7hZHRwzK7XnziJge/MSJM0sn1BjQPJYlRDELrPqxZfobvt66kUfbG/5wM438HucBOoc2gag93Snsyyv0jZvqiIhZdgwZz6/o/XYS6f+X+oj6ZDK39f9SepSR6fyescaBEunwJZ/dzVhP/xQpA6oMQ0SiRuYzNwBkL761Sgn4w9LqkXdl1YUXqeTH/+Xc+gpmvz0lYfD6uEuehdQJXFrxhUbqC6k4McszKcA2r6BfBznnlTjZicleQDObUjjlbMRqfB/kfSNH7gLOp5y/n5wwAq46BJrGCWGzZOXYwLRoEPEJ5rKMtKaKlY08byH5X4506cCZOrriDKz+F5d2ozqNiiQWFMSnlKlgvv2FCLQ/dft2JFtVgy/BMLK8k5rIi3MgfVVpFMf1SUg4au2+8m2RcsDUVfCIcrbX6loSoOr3r7muOqo8= mbright@cpacketnetworks.com"
+        },
+        "virtualNetwork": {
+            "value": {
+                "name": "cpacketVnet",
+                "resourceGroup": "mbright-bicep",
+                "addressPrefixes": [
+                    "10.20.0.0/16"
+                ],
+                "addressPrefix": "10.20.0.0/16",
+                "newOrExisting": "new",
+                "subnets": {
+                    "monSubnet": {
+                        "name": "monitor",
+                        "addressPrefix": "10.20.0.0/24",
+                        "startAddress": "10.20.0.4"
+                    }
+                }
+            }
+        },
+        "cClearVMSize": {
+            "value": "Standard_D8s_v5"
+        },
+        "cClearCount": {
+            "value": 1
+        },
+        "cClearVmName": {
+            "value": "cclear"
+        },
+        "cClearImage": {
+            "value": {
+                "name": "cclear-v",
+                "id": "/subscriptions/52ba377e-6215-48d9-beee-b3553fd81150/resourceGroups/cloud-builds/providers/Microsoft.Compute/galleries/releases/images/cclear-v",
+                "location": "eastus2",
+                "subscriptionName": "cPacket Production"
+            }
+        },
+        "cClearImageURI": {
+            "value": ""
+        },
+        "cvuVMSize": {
+            "value": "Standard_D2s_v5"
+        },
+        "cvuCount": {
+            "value": 3
+        },
+        "cvuVmName": {
+            "value": "cvu"
+        },
+        "cvuImage": {
+            "value": {
+                "name": "cvu-v-22.3.2.vhd",
+                "id": "/subscriptions/93004638-8c6b-4e33-ba58-946afd57efdf/resourceGroups/cpacket-ccloud/providers/Microsoft.Compute/images/cvu-v-22.3.2.vhd",
+                "location": "eastus2",
+                "subscriptionName": "cPacket Azure Root"
+            }
+        },
+        "cVuImageURI": {
+            "value": ""
+        },
+        "cVu3rdPartyToolIPs": {
+            "value": "10.1.2.3"
+        },
+        "cstorVMSize": {
+            "value": "Standard_D4s_v5"
+        },
+        "cstorCount": {
+            "value": 1
+        },
+        "cstorVmName": {
+            "value": "cstor"
+        },
+        "cstorDiskCount": {
+            "value": 2
+        },
+        "cstorDiskSize": {
+            "value": 500
+        },
+        "cstorImage": {
+            "value": {
+                "name": "ccloud-cstorv",
+                "id": "/subscriptions/93004638-8c6b-4e33-ba58-946afd57efdf/resourceGroups/cloud-builds/providers/Microsoft.Compute/images/ccloud-cstorv",
+                "location": "eastus2",
+                "subscriptionName": "cPacket Azure Root"
+            }
+        },
+        "cStorImageURI": {
+            "value": ""
+        },
+        "tagsByResource": {
+            "value": {
+                "Microsoft.Network/loadBalancers": {
+                    "cpacket:CreatedBy": "mbright"
+                },
+                "Microsoft.Network/networkInterfaces": {
+                    "cpacket:CreatedBy": "mbright"
+                },
+                "Microsoft.Storage/storageAccounts": {
+                    "cpacket:CreatedBy": "mbright"
+                },
+                "Microsoft.Compute/virtualMachines": {
+                    "cpacket:CreatedBy": "mbright"
+                },
+                "Microsoft.Network/virtualNetworks": {
+                    "cpacket:CreatedBy": "mbright"
+                }
+            }
+        }
+    }
+}
