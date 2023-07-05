@@ -25,3 +25,7 @@ format:
 generate-params:
 	bicep generate-params main.bicep --output-format json --include-params all
 	bicep generate-params main.bicep --output-format bicepparam --include-params all
+
+.PHONY: clean
+clean:
+	git clean -fdx
