@@ -2,7 +2,7 @@
 param location string
 
 @description('User name for the Virtual Machine.')
-param adminUsername string
+param adminUsername string = 'ubuntu'
 
 @allowed([
   'password'
