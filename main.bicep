@@ -90,7 +90,7 @@ param appName string = 'fnapp${uniqueString(resourceGroup().id)}'
 param storageAccountType string = 'Standard_LRS'
 
 @description('Location for Application Insights')
-param appInsightsLocation string
+param appInsightsLocation string = location
 
 @description('The language worker runtime to load in the function app.')
 @allowed([
