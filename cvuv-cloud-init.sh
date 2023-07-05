@@ -51,9 +51,3 @@ cvuv_vxlan_id_9 = 1346
 cvuv_vxlan_srcip_9 = "$capture_nic_ip"
 cvuv_vxlan_remoteip_9 = ""
 BOOTCONFIG
-
-IFS=' ' read -ra ADDR <<< "$REMOTE_IPS"
-for i in "${!ADDR[@]}"; do
-  # Set the remote IPs in the cvu_vxlan_remoteip_* variables
-  sed -i "s|cvuv_vxlan_remoteip_$i = \"\",|cvuv_vxlan_remoteip_$i = \"${ADDR[i]}\",|" "$boot_config_file"
-done

@@ -100,6 +100,35 @@ param appInsightsLocation string = location
 ])
 param runtime string = 'node'
 
+var cvuv_cloud_init_header = '''
+#!/bin/bash
+set -ex
+
+boot_config_file="/home/cpacket/boot_config.toml"
+capture_nic_ip="$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)"
+capture_nic="eth0"
+
+touch "$boot_config_file"
+chmod a+w "$boot_config_file"
+cat >"$boot_config_file"  <<BOOTCONFIG
+vm_type = "azure"
+cvuv_mode = "inline"
+cvuv_mirror_eth_0 = "$capture_nic"
+
+'''
+
+var cvuv_cloud_init_footer = '''
+BOOTCONFIG
+'''
+
+var cvuv_cloud_init_body = '''
+cvuv_vxlan_id_0 = 1337
+cvuv_vxlan_srcip_0 = "$capture_nic_ip"
+cvuv_vxlan_remoteip_0 = "REPLACE_WITH_REMOTE_IP"
+'''
+
+var cvuv_cloud_init = '${cvuv_cloud_init_header}${replace(cvuv_cloud_init_body, 'REPLACE_WITH_REMOTE_IP', cVu3rdPartyToolIPs)}${cvuv_cloud_init_footer}'
+
 var functionAppName = appName
 var hostingPlanName = appName
 var applicationInsightsName = appName
@@ -365,7 +394,7 @@ resource cvuvm 'Microsoft.Compute/virtualMachines@2021-03-01' = [for i in range(
       adminUsername: adminUsername
       adminPassword: adminPasswordOrKey
       linuxConfiguration: any(authenticationType == 'password' ? null : linuxConfiguration) // TODO: workaround for https://github.com/Azure/bicep/issues/449
-      customData: loadFileAsBase64('./cvuv-cloud-init.sh')
+      customData: base64(cvuv_cloud_init)
     }
   }
   tags: contains(tagsByResource, 'Microsoft.Compute/virtualMachines') ? tagsByResource['Microsoft.Compute/virtualMachines'] : null
