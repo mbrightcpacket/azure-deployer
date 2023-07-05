@@ -20,60 +20,60 @@ param virtualNetwork object
 
 // cClear
 @description('cclear VM size')
-param cClearVMSize string
+param cClearVMSize string = 'Standard_D8s_v5'
 
 @description('Number of cClears')
-param cClearCount int = 0
+param cClearCount int = 1
 
 @description('cClear VM Name')
-param cClearVmName string
+param cClearVmName string = 'cclear'
 
 @description('cClear Image URI')
 param cClearImage object
 
 @description('cClear Image Version')
-param cClearImageURI string = ''
+param cClearImageURI string
 
 // cVu
 @description('cvu VM size')
-param cvuVMSize string
+param cvuVMSize string = 'Standard_D2s_v5'
 
 @description('Number of cVus')
 param cvuCount int = 3
 
 @description('cVu Base VM Name')
-param cvuVmName string
+param cvuVmName string = 'cvu'
 
 @description('cvu Image URI')
 param cvuImage object
 
 @description('cvu Image Version')
-param cVuImageURI string = ''
+param cVuImageURI string
 
 @description('cVu 3rd Party Tools')
-param cVu3rdPartyToolIPs string = ''
+param cVu3rdPartyToolIPs string
 
 // cStor
 @description('cvu VM size')
-param cstorVMSize string
+param cstorVMSize string = 'Standard_D4s_v5'
 
 @description('Number of cStors')
 param cstorCount int = 1
 
 @description('cStor VM Name')
-param cstorVmName string
+param cstorVmName string = 'cstor'
 
 @description('cStor Disk Count')
-param cstorDiskCount int
+param cstorDiskCount int = 2
 
 @description('cStor Size Count')
-param cstorDiskSize int
+param cstorDiskSize int = 500
 
 @description('cstor Image URI')
 param cstorImage object
 
 @description('cstor Image Version')
-param cStorImageURI string = ''
+param cStorImageURI string
 
 @description('tags from TagsByResource')
 param tagsByResource object
